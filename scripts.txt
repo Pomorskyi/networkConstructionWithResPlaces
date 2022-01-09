@@ -1,0 +1,29 @@
+java NetworkNode -ident 123 -tcpport 9990 A:2 C:2
+java NetworkNode -ident 124 -tcpport 9991 -gateway localhost:9990 B:2 C:3 D:3
+java NetworkNode -ident 125 -tcpport 9992 -gateway localhost:9991 D:1 F:7
+java NetworkNode -ident 126 -tcpport 9993 -gateway localhost:9991 F:6 A:9 C:2
+java NetworkNode -ident 127 -tcpport 9994 -gateway localhost:9993 G:2
+java NetworkNode -ident 128 -tcpport 9995 -gateway localhost:9994 B:3 A:2
+java NetworkNode -ident 129 -tcpport 9996 -gateway localhost:9994 C:1
+
+java NetworkClient -ident 321 -gateway localhost:9990 A:2 C:5 B:2
+
+java NetworkClient -ident 321 -gateway localhost:9991 A:2 C:5 D:2
+java NetworkClient -ident 322 -gateway localhost:9992 F:4 D:2 A:5
+
+java NetworkClient -ident 321 -gateway localhost:9990 A:2 C:5 D:4
+java NetworkClient -ident 322 -gateway localhost:9990 F:6 B:1
+
+----------------------------------------------------------------------
+java NetworkNode -ident 123 -tcpport 9990 A:2 C:2
+java NetworkNode -ident 124 -tcpport 9991 -gateway 192.168.1.103:9990 B:2 C:3 D:3
+java NetworkNode -ident 125 -tcpport 9992 -gateway 192.168.1.103:9990 D:1 F:7
+java NetworkNode -ident 126 -tcpport 9993 -gateway 192.168.1.103:9991 F:6 A:9 C:2
+java NetworkNode -ident 127 -tcpport 9994 -gateway 192.168.1.103:9993 G:2
+
+java NetworkClient -ident 321 -gateway 192.168.1.103:9991 A:11 G:1
+java NetworkClient -ident 322 -gateway 192.168.1.103:9992 G:1 F:2 C:1
+java NetworkClient -ident 323 -gateway 192.168.1.103:9994 F:3 D:1
+java NetworkClient -ident 324 -gateway 192.168.1.103:9993 K:12
+java NetworkClient -ident 325 -gateway 192.168.1.103:9992 A:1
+java NetworkClient -ident 326 -gateway 192.168.1.103:9990 TERMINATE
